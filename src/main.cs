@@ -1,7 +1,7 @@
 class main
 {
     public static string username = "";
-    public static string userID = "";
+    public static string userID = Guid.NewGuid().ToString();
     public static string ageRange = "";
     public static string gender = "";
     public static string educationLevel = "";
@@ -29,6 +29,7 @@ class main
         financialConfidenceCheck();
 
         Console.WriteLine(username + ageRange + gender + educationLevel + employmentStatus + financialConfidence);
+        Console.WriteLine("Randomly generate ID: " + userID);
     }
 
     static void userNameInput()
