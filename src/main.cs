@@ -8,6 +8,15 @@ class main
     public static string employmentStatus = "";
     public static int financialConfidence = 0;
     public static int input = 0;
+    public static int income = 100;
+    public static int expense = 60;
+    public static int steps = 12;
+    public static int allowance = 200;
+    public static int stepCounter = 0;
+
+    
+
+    
 
     static void Main(string[] args)
     {
@@ -30,6 +39,19 @@ class main
 
         Console.WriteLine(username + ageRange + gender + educationLevel + employmentStatus + financialConfidence);
         Console.WriteLine("Randomly generate ID: " + userID);
+        Console.WriteLine("Starting balance: " + allowance);
+        Console.WriteLine("Monthly income: " + income);
+        Console.WriteLine("Monthly expense: " + expense);
+        Console.WriteLine();
+
+        for (stepCounter = 0; stepCounter < steps; stepCounter++)
+        {
+            allowance += income;
+            allowance -= expense;
+            Console.WriteLine("This is step " + (stepCounter + 1));
+            Console.WriteLine("Current balance: " + allowance);            
+            Console.WriteLine();
+        }
     }
 
     static void userNameInput()
@@ -169,7 +191,7 @@ class main
     static void financialConfidenceInput()
     {
         Console.WriteLine("What would you rate your financial confidence on a scale 1-5?");
-        input = int.Parse(Console.ReadLine() ?? "0");
+        input = int.Parse(Console.ReadLine());
     }
 
     static void financialConfidenceCheck()
