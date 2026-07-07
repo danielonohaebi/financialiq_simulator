@@ -7,6 +7,8 @@ class main
     public static string gender = "";
     public static string educationLevel = "";
     public static string employmentStatus = "";
+    public static string consent = " ";
+    public static int num = 0;
     public static int financialConfidence = 0;
     public static int input = 0;
     public static int income = 100;
@@ -14,6 +16,8 @@ class main
     public static int steps = 12;
     public static int allowance = 200;
     public static int stepCounter = 0;
+    public static int pExpense = 0;
+    public static int pIncome = 0;
 
     static void Main(string[] args)
     {
@@ -51,14 +55,73 @@ class main
         Console.WriteLine("Monthly expense: " + expense);
         Console.WriteLine();
 
-        for (stepCounter = 0; stepCounter < steps; stepCounter++)
+        /*for (stepCounter = 0; stepCounter < steps; stepCounter++)
         {
             allowance += income;
             allowance -= expense;
             Console.WriteLine("This is step " + (stepCounter + 1));
             Console.WriteLine("Current balance: " + allowance);
             Console.WriteLine();
+        }*/
+
+        for (stepCounter = 0; stepCounter < steps; stepCounter++)
+        {
+            num = random.Next(0, PromptService.Prompts.Count);
+            SimulationPrompt firstPrompt = PromptService.Prompts[num];
+
+            Console.WriteLine();
+            Console.WriteLine("This is step " + (stepCounter + 1));
+            Console.WriteLine();
+            Console.WriteLine("Do you accept this task? (Invalid input will lead to rejection of task)");
+            Console.WriteLine("Task: " + firstPrompt.Title);
+            Console.WriteLine("Context: " + firstPrompt.Message);
+            Console.WriteLine("Effect on Income: " + firstPrompt.IncomeEffect);
+            Console.WriteLine("Effect on Expence: " + firstPrompt.ExpenseEffect);
+            Console.WriteLine("Category: " + firstPrompt.Category);
+            Console.WriteLine();
+
+            consentInput();
+
+            if (consent == "y" || consent == "Y")
+            {
+                pExpense = firstPrompt.ExpenseEffect;
+                pIncome = firstPrompt.IncomeEffect;
+            }
+            else if (consent == "n" || consent == "N")
+            {
+                pExpense = 0;
+                pIncome = 0;
+            }
+            else
+            {
+                Console.WriteLine("Please input a valid input");
+                pExpense = 0;
+                pIncome = 0;
+            }
+
+            applyIncome();
+            applyExpense();
+
+            Console.WriteLine("Your current balance is " + allowance);
         }
+    }
+
+    static void applyIncome()
+    {
+        allowance += income;
+        allowance += pIncome;
+    }
+
+    static void applyExpense()
+    {
+        allowance -= expense;
+        allowance -= pExpense;
+    }
+
+    static void consentInput()
+    {
+        Console.WriteLine("Answer Y/N");
+        consent = Console.ReadLine() ?? "";
     }
 
     static void userNameInput()
