@@ -1,5 +1,6 @@
 class main
 {
+    public static Random random = new Random();
     public static string username = "";
     public static string userID = Guid.NewGuid().ToString();
     public static string ageRange = "";
