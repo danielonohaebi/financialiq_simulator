@@ -14,13 +14,19 @@ class main
     public static int allowance = 200;
     public static int stepCounter = 0;
 
-    
-
-    
-
     static void Main(string[] args)
     {
+        Console.WriteLine();
         userNameInput();
+        userNameCheck();
+
+        while (userNameCheck() == false)
+        {
+            Console.WriteLine("ERROR: Your username must contain atleast one number.");
+            Console.WriteLine();
+            userNameInput();
+        }
+        Console.WriteLine();
 
         ageRangeInput();
         ageRangeCheck();
@@ -49,15 +55,27 @@ class main
             allowance += income;
             allowance -= expense;
             Console.WriteLine("This is step " + (stepCounter + 1));
-            Console.WriteLine("Current balance: " + allowance);            
+            Console.WriteLine("Current balance: " + allowance);
             Console.WriteLine();
         }
     }
 
     static void userNameInput()
     {
-        Console.WriteLine("Enter a username");
+        Console.WriteLine("Enter a username (Your username must contain atleast one number)");
         username = Console.ReadLine();
+    }
+
+    static bool userNameCheck()
+    {
+        foreach (char c in username)
+        {
+            if (char.IsDigit(c))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     static void ageRangeInput()
