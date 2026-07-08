@@ -18,6 +18,9 @@ class main
     public static int stepCounter = 0;
     public static int pExpense = 0;
     public static int pIncome = 0;
+    public static int acceptedPrompts = 0;
+    public static int rejectedPrompts = 0;
+    public static List<string> decisionsMade = new List<string>();
 
     static void Main(string[] args)
     {
@@ -55,15 +58,6 @@ class main
         Console.WriteLine("Monthly expense: " + expense);
         Console.WriteLine();
 
-        /*for (stepCounter = 0; stepCounter < steps; stepCounter++)
-        {
-            allowance += income;
-            allowance -= expense;
-            Console.WriteLine("This is step " + (stepCounter + 1));
-            Console.WriteLine("Current balance: " + allowance);
-            Console.WriteLine();
-        }*/
-
         for (stepCounter = 0; stepCounter < steps; stepCounter++)
         {
             num = random.Next(0, PromptService.Prompts.Count);
@@ -86,17 +80,23 @@ class main
             {
                 pExpense = firstPrompt.ExpenseEffect;
                 pIncome = firstPrompt.IncomeEffect;
+                acceptedPrompts++;
+                decisionsMade.Add("Step " + (stepCounter + 1) + ": Accepted - " + firstPrompt.Title);
             }
             else if (consent == "n" || consent == "N")
             {
                 pExpense = 0;
                 pIncome = 0;
+                rejectedPrompts++;
+                decisionsMade.Add("Step " + (stepCounter + 1) + ": Rejected - " + firstPrompt.Title);
             }
             else
             {
                 Console.WriteLine("Please input a valid input");
                 pExpense = 0;
                 pIncome = 0;
+                rejectedPrompts++;
+                decisionsMade.Add("Step " + (stepCounter + 1) + ": Invalid input, rejected - " + firstPrompt.Title);
             }
 
             applyIncome();
