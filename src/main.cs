@@ -118,6 +118,17 @@ class main
         Console.WriteLine("gender: " + gender);
         Console.WriteLine("Highest level of education: " + educationLevel);
         Console.WriteLine("employment status: " + employmentStatus);
+
+        Console.WriteLine();
+        Console.WriteLine("Your Summary;");
+        Console.WriteLine();
+        Console.WriteLine("Total Income: " + totalIncome);
+        Console.WriteLine("Total expenses: " + totalExpense);
+        Console.WriteLine("Final Balance: " + allowance);
+        Console.WriteLine("Number of accepted prompts: " + acceptedPrompts);
+        Console.WriteLine("Number of rejected prompts: " + rejectedPrompts);
+        Console.WriteLine("List of decisions made: ");
+        Console.WriteLine();
     }
 
     static void applyIncome()
