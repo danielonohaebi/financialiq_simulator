@@ -104,6 +104,16 @@ class main
 
             Console.WriteLine("Your current balance is " + allowance);
         }
+
+        Console.WriteLine();
+        Console.WriteLine("Your Details;");
+        Console.WriteLine();
+        Console.WriteLine("Name: " + username);
+        Console.WriteLine("Your user ID: " + userID);
+        Console.WriteLine("Age range: " + ageRange);
+        Console.WriteLine("gender: " + gender);
+        Console.WriteLine("Highest level of education: " + educationLevel);
+        Console.WriteLine("employment status: " + employmentStatus);
     }
 
     static void applyIncome()
