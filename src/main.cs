@@ -14,6 +14,8 @@ class main
     public static int income = 100;
     public static int expense = 60;
     public static int steps = 12;
+    public static int totalExpense = 0;
+    public static int totalIncome = 0;
     public static int allowance = 200;
     public static int stepCounter = 0;
     public static int pExpense = 0;
@@ -101,6 +103,8 @@ class main
 
             applyIncome();
             applyExpense();
+            expenseCalculator();
+            incomeCalculator();
 
             Console.WriteLine("Your current balance is " + allowance);
         }
@@ -126,6 +130,18 @@ class main
     {
         allowance -= expense;
         allowance -= pExpense;
+    }
+
+    static void expenseCalculator()
+    {
+        totalExpense += expense;
+        totalExpense += pExpense;
+    }
+
+    static void incomeCalculator()
+    {
+        totalIncome += income;
+        totalIncome += pIncome;
     }
 
     static void consentInput()
