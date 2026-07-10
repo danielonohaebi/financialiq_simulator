@@ -129,6 +129,11 @@ class main
         Console.WriteLine("Number of rejected prompts: " + rejectedPrompts);
         Console.WriteLine("List of decisions made: ");
         Console.WriteLine();
+
+        foreach (string decision in decisionsMade)
+        {
+            Console.WriteLine(decision);
+        }
     }
 
     static void applyIncome()
